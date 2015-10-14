@@ -1,0 +1,58 @@
+{
+  "identity": "file",
+  "connection": "default",
+  "schema": true,
+  "limit": 20,
+  "defaultTemplate": "default",
+  "attributes": {
+    "readable": {
+      "type": "boolean"
+    },
+    "domain": {
+      "type": "boolean"
+    },
+    "truncated": {
+      "type": "boolean"
+    },
+    "fieldname": {
+      "type": "string"
+    },
+    "filename": {
+      "type": "string"
+    },
+    "encoding": {
+      "type": "string"
+    },
+    "transferEncoding": {
+      "type": "string"
+    },
+    "mime": {
+      "type": "string"
+    },
+    "mimeType": {
+      "type": "string"
+    },
+    "originalFilenameFormatted": {
+      "type": "string"
+    },
+    "originalFilename": {
+      "type": "string"
+    },
+    "lang": {
+      "type": "string",
+      "required": true
+    },
+    "template": {
+      "type": "string",
+      "required": true
+    },
+    "id_ref": {
+      "type": "int"
+    },
+    "createdBy": {
+      "model": "user"
+    }
+  },
+  "autoCreatedAt": true,
+  "autoUpdatedAt": true
+}
