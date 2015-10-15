@@ -6,10 +6,10 @@
 
 // Node.js core.
 const path = require('path');
+const fs = require('fs');
 
 // Public node modules.
 const _ = require('lodash');
-const fs = require('fs');
 
 module.exports = {
 
