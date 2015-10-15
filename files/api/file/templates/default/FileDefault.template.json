@@ -1,0 +1,18 @@
+{
+  "default": {
+    "attributes": {
+      "readable": {},
+      "domain": {},
+      "truncated": {},
+      "fieldname": {},
+      "filename": {},
+      "encoding": {},
+      "transferEncoding": {},
+      "mime": {},
+      "mimeType": {},
+      "originalFilenameFormatted": {},
+      "originalFilename": {}
+    },
+    "displayedAttribute": "filename"
+  }
+}
