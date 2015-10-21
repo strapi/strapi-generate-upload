@@ -1,6 +1,6 @@
 {
   "name": "strapi-generate-upload",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Generate the default upload features for a Strapi application.",
   "homepage": "http://strapi.io",
   "keywords": [
