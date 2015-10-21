@@ -1,9 +1,10 @@
 {
   "routes": {
     "POST /upload": {
-      "controller": "File",
+      "controller": "Upload",
       "action": "upload",
       "policies": [
+        "addDataCreate",
         "authenticated"
       ]
     }

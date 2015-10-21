@@ -40,7 +40,7 @@ module.exports = {
     part.pipe(stream);
 
     // Register the data of the file in the database.
-    promises.push(File.create(_.merge(part, {
+    promises.push(strapi.orm.collections.upload.create(_.merge(part, {
       user: ctx.user && ctx.user.id,
       originalFilenameFormatted: _.kebabCase(part.fileName),
       originalFilename: part.fileName || '',
@@ -48,8 +48,8 @@ module.exports = {
     })));
 
     try {
-      let files = yield promises;
-      deferred.resolve(files);
+      let uploadDescriptions = yield promises;
+      deferred.resolve(uploadDescriptions);
     } catch (err) {
       strapi.log.error(err);
       deferred.reject(err);

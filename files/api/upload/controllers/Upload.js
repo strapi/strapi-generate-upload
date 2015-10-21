@@ -44,12 +44,12 @@ module.exports = {
 
     // Upload each file.
     while (part = yield parts) {
-      promises.push(yield strapi.api.file.services.upload.upload(part, this));
+      promises.push(yield strapi.api.upload.services.upload.upload(part, this));
     }
 
     try {
-      let filesDescriptions = yield promises;
-      this.body = filesDescriptions;
+      let uploadDescriptions = yield promises;
+      this.body = uploadDescriptions;
     } catch (err) {
       strapi.log.error(err);
       this.status = err.status || 500;
