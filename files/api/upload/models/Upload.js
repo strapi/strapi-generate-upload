@@ -13,12 +13,12 @@ const _ = require('lodash');
 const anchor = require('anchor');
 
 // Model settings.
-const settings = require('./File.settings.json');
+const settings = require('./Upload.settings.json');
 
 /**
- * File model
+ * Upload model
  *
- * This the function file for File model.
+ * This the function file for Upload model.
  * We advise you to no put connection, schema and attributes
  * in this file aiming to update the model from the UI.
  */
