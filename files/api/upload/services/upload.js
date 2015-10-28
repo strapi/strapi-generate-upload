@@ -24,7 +24,7 @@ module.exports = {
   upload: function * (part, ctx) {
 
     // Init the promise.
-    let deferred = Promise.defer();
+    const deferred = Promise.defer();
 
     // Init and format variables.
     const promises = [];
@@ -48,7 +48,7 @@ module.exports = {
     })));
 
     try {
-      let uploadDescriptions = yield promises;
+      const uploadDescriptions = yield promises;
       deferred.resolve(uploadDescriptions);
     } catch (err) {
       strapi.log.error(err);

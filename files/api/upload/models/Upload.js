@@ -5,7 +5,6 @@
  */
 
 // Node.js core.
-const fs = require('fs');
 const path = require('path');
 
 // Public node modules.
@@ -64,8 +63,8 @@ module.exports = {
       values.template = template;
 
       // Merge model type with template validations
-      var templateAttributes = _.merge(_.pick(strapi.models[api].attributes, 'lang'), strapi.api[api].templates[template].attributes);
-      var err = [];
+      const templateAttributes = _.merge(_.pick(strapi.models[api].attributes, 'lang'), strapi.api[api].templates[template].attributes);
+      const err = [];
 
       _.forEach(templateAttributes, function (rules, key) {
         if (values.hasOwnProperty(key) || key === 'lang') {
@@ -74,7 +73,7 @@ module.exports = {
             values[key] = _.includes(strapi.config.i18n.locales, values[key]) ? values[key] : strapi.config.i18n.defaultLocale;
           } else {
             // Check validations
-            var rulesTest = anchor(values[key]).to(rules);
+            const rulesTest = anchor(values[key]).to(rules);
 
             if (rulesTest) {
               err.push(rulesTest[0]);
@@ -82,8 +81,8 @@ module.exports = {
           }
         } else {
           rules.required && err.push({
-            rule: "required",
-            message: "Missing attributes " + key
+            rule: 'required',
+            message: 'Missing attributes ' + key
           });
         }
       });

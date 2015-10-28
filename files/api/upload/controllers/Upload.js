@@ -8,8 +8,8 @@
 const path = require('path');
 
 // Public node modules.
-const parse = require('co-busboy');
 const _ = require('lodash');
+const parse = require('co-busboy');
 
 module.exports = {
 
@@ -24,20 +24,18 @@ module.exports = {
     let part;
 
     // `co-busboy` configuration.
-    let parts = parse(this,
+    const parts = parse(this,
       _.merge(strapi.config.upload, {
         autoFields: true,
 
         // Validation used by `co-busboy`.
         checkFile: function (fieldname, file, filename) {
-          let acceptedExtensions = strapi.config.upload.acceptedExtensions || [];
+          const acceptedExtensions = strapi.config.upload.acceptedExtensions || [];
           if (acceptedExtensions[0] !== '*' && !_.contains(acceptedExtensions, path.extname(filename))) {
-            deferred.reject({
-              status: 400,
-              error: {
-                message: 'Invalid file format ' + filename ? 'for this file' + filename : ''
-              }
-            });
+            this.status = 400;
+            this.body = {
+              message: 'Invalid file format ' + filename ? 'for this file' + filename : ''
+            };
           }
         }
       }));
@@ -48,7 +46,7 @@ module.exports = {
     }
 
     try {
-      let uploadDescriptions = yield promises;
+      const uploadDescriptions = yield promises;
       this.body = uploadDescriptions;
     } catch (err) {
       strapi.log.error(err);
