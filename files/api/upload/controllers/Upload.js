@@ -25,12 +25,12 @@ module.exports = {
 
     // `co-busboy` configuration.
     const parts = parse(this,
-      _.merge(strapi.config.upload, {
+      _.merge(strapi.api.upload.config, {
         autoFields: true,
 
         // Validation used by `co-busboy`.
         checkFile: function (fieldname, file, filename) {
-          const acceptedExtensions = strapi.config.upload.acceptedExtensions || [];
+          const acceptedExtensions = strapi.api.upload.config.acceptedExtensions || [];
           if (acceptedExtensions[0] !== '*' && !_.contains(acceptedExtensions, path.extname(filename))) {
             this.status = 400;
             this.body = {

@@ -47,13 +47,12 @@ module.exports = {
   autoCreatedAt: settings.autoCreatedAt,
   autoUpdatedAt: settings.autoUpdatedAt,
 
-  // Lifecycle callbacks
+  /**
+   * Lifecycle callbacks
+   */
+
+  // Before validate.
   beforeValidate: function (values, next) {
-    /**
-     * Handle Anchor validations to consider our templates system
-     *
-     * WARNING: Don't remove this part of code if you don't know what you are doing
-     */
     const api = path.basename(__filename, '.js').toLowerCase();
 
     if (strapi.api.hasOwnProperty(api) && _.size(strapi.api[api].templates)) {
