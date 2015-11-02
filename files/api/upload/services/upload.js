@@ -36,7 +36,7 @@ module.exports = {
     const filename = Date.now().toString() + '-' + (_.kebabCase(part.fileName) || Math.floor(Math.random() * 1000000).toString());
 
     // Start uploading.
-    stream = fs.createWriteStream(path.join(process.cwd(), strapi.config.upload.folder || defaultUploadFolder, filename));
+    stream = fs.createWriteStream(path.join(process.cwd(), strapi.api.upload.config.folder || defaultUploadFolder, filename));
     part.pipe(stream);
 
     // Register the data of the file in the database.
