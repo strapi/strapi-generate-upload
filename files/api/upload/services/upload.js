@@ -33,7 +33,7 @@ module.exports = {
     ctx = ctx || {};
 
     // Set the filename.
-    const filename = Date.now().toString() + '-' + (_.kebabCase(part.fileName) || Math.floor(Math.random() * 1000000).toString());
+    const filename = Date.now().toString() + '-' + (_.kebabCase(part.filename) || Math.floor(Math.random() * 1000000).toString());
 
     // Start uploading.
     stream = fs.createWriteStream(path.join(process.cwd(), strapi.api.upload.config.folder || defaultUploadFolder, filename));
@@ -41,9 +41,9 @@ module.exports = {
 
     // Register the data of the file in the database.
     promises.push(strapi.orm.collections.upload.create(_.merge(part, {
-      user: ctx.user && ctx.user.id,
-      originalFilenameFormatted: _.kebabCase(part.fileName),
-      originalFilename: part.fileName || '',
+      createdBy: ctx.user && ctx.user.id,
+      originalFilenameFormatted: _.kebabCase(part.filename),
+      originalFilename: part.filename || '',
       filename: filename
     })));
 
